@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
-    <title>Student Event Management</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Event Management System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <h1>Student Event Management System</h1>
+    <div class="container">
+        <h1>Student Event Management System</h1>
+
+        <!-- Event එකතු කරන Form එක -->
+        <form id="eventForm">
+            <input type="text" id="eventName" placeholder="Event Name" required>
+            <input type="date" id="eventDate" required>
+            <input type="text" id="eventLocation" placeholder="Location" required>
+            <button type="submit">Add Event</button>
+        </form>
+
+        <!-- එකතු කළ Events පෙන්වන ස්ථානය -->
+        <h2>Upcoming Events</h2>
+        <ul id="eventList"></ul>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
