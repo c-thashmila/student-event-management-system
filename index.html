@@ -1,73 +1,30 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Event Management System</title>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-    <header>
-
+    <div class="container">
         <h1>Student Event Management System</h1>
 
-    </header>
-
-    <section class="search-box">
-
-        <input type="text" id="search" placeholder="Search events...">
-
-        <button onclick="searchEvent()">Search</button>
-
-    </section>
-
-    <section class="events">
-
-        <h2>Upcoming Events</h2>
-
-        <div class="event">
-
-            <h3>Hackathon 2026</h3>
-
-            <p>Date: 15 October 2026</p>
-
-            <button onclick="register('Hackathon 2026')">Register</button>
-
-        </div>
-
-        <div class="event">
-
-            <h3>Career Fair</h3>
-
-            <p>Date: 20 October 2026</p>
-
-            <button onclick="register('Career Fair')">Register</button>
-
-        </div>
-
-    </section>
-
-    <section class="form-section">
-
-        <h2>Student Registration</h2>
-
-        <form id="regForm">
-
-            <input type="text" id="name" placeholder="Student Name" required>
-
-            <input type="email" id="email" placeholder="Email" required>
-
-            <button type="submit">Submit</button>
-
+        <!-- Event එකතු කරන Form එක -->
+        <form id="eventForm">
+            <input type="text" id="eventName" placeholder="Event Name" required>
+            <input type="date" id="eventDate" required>
+            <input type="text" id="eventLocation" placeholder="Location" required>
+            <button type="submit">Add Event</button>
         </form>
 
-    </section>
+        <!-- එකතු කළ Events පෙන්වන ස්ථානය -->
+        <h2>Upcoming Events</h2>
+        <ul id="eventList"></ul>
+    </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+           
