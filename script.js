@@ -1,40 +1,30 @@
-function register(eventName) {
-
-    alert("Successfully registered for " + eventName);
-
-}
-
-function searchEvent() {
-
-    let search = document.getElementById("search").value.toLowerCase();
-
-    let events = document.querySelectorAll(".event");
-
-    events.forEach(event => {
-
-        let title = event.querySelector("h3").innerText.toLowerCase();
-
-        if(title.includes(search)) {
-
-            event.style.display = "block";
-
-        } else {
-
-            event.style.display = "none";
-
-        }
-
-    });
-
-}
-
-document.getElementById("regForm").addEventListener("submit", function(e){
-
+document.getElementById('eventForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    let name = document.getElementById("name").value;
+    // Form inputs ලබා ගැනීම
+    const name = document.getElementById('eventName').value;
+    const date = document.getElementById('eventDate').value;
+    const location = document.getElementById('eventLocation').value;
 
-    alert("Thank you " + name + "! Registration Successful.");
+    // නව List item එකක් සෑදීම
+    const eventList = document.getElementById('eventList');
+    const li = document.createElement('li');
 
-    document.getElementById("regForm").reset();
+    li.innerHTML = `
+        <div>
+            <strong>${name}</strong> - ${date} (${location})
+        </div>
+        <button class="delete-btn" onclick="deleteEvent(this)">Delete</button>
+    `;
+
+    eventList.appendChild(li);
+
+    // Form එක Clear කිරීම
+    document.getElementById('eventForm').reset();
 });
+
+// Event එකක් Remove කිරීමේ Function එක
+function deleteEvent(element) {
+    element.parentElement.remove();
+}
+  
