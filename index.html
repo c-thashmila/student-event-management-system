@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Student Event Management System</title>
 
@@ -10,168 +14,136 @@
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
+
+
 <body>
- <div class="container">
-<header> <h1>
+
+    <!-- HOME / LOGIN PAGE -->
+
+    <div class="home-page">
+
+        <!-- Language Selection -->
+
+        <div class="language-box">
+
+            <label for="language">
+                🌐 Language
+            </label>
+
+            <select id="language"
+                    onchange="changeLanguage()">
+
+                <option value="en">
+                    English
+                </option>
+
+                <option value="si">
+                    සිංහල
+                </option>
+
+                <option value="ta">
+                    தமிழ்
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Login Box -->
+
+        <div class="login-container">
+
+            <div class="logo">
+
                 <i class="fa-solid fa-calendar-check"></i>
-                Student Event Management
+
+            </div>
+
+
+            <h1 id="systemTitle">
+                Student Event Management System
             </h1>
- <p>
-                Organize, track, and manage university events efficiently.
+
+
+            <p id="welcomeText">
+                Welcome! Please login to continue.
             </p>
-        </header>
-        <section class="card">
-<h2>
-                <i class="fa-solid fa-plus-circle"></i>
-                Add New Event
-            </h2>
- <form id="eventForm">
-<div class="form-group">
-                    <input type="text"
-                           id="eventName"
-                           placeholder="Event Name (e.g., Tech Symposium)"
-                           required>
-                </div>
 
-                <div class="form-row">
 
-                    <div class="form-group">
-                        <input type="date"
-                               id="eventDate"
-                               required>
-                    </div>
+            <!-- Login Form -->
 
-                    <div class="form-group">
+            <form id="loginForm">
 
-                        <select id="eventCategory" required>
 
-                            <option value="" disabled selected>
-                                Select Category
-                            </option>
+                <div class="input-group">
 
-                            <option value="Academic">Academic</option>
-                            <option value="Sports">Sports</option>
-                            <option value="Cultural">Cultural</option>
-                            <option value="Workshop">Workshop</option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-                <div class="form-group">
+                    <i class="fa-solid fa-id-card"></i>
 
                     <input type="text"
-                           id="eventLocation"
-                           placeholder="Location (e.g., Main Auditorium)"
-                           required>
-                 </div>
-
-                <button type="submit" class="btn-submit">
-
-                    <i class="fa-solid fa-paper-plane"></i>
-                    Add Event </button>
- </form>
- </section>
-
-        <section class="controls">
-
-            <div class="search-box">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                <input type="text"
-                       id="searchInput"
-                       placeholder="Search events...">
-
-            </div>
-
-
-            <div class="filter-box">
-
-                <select id="filterCategory">
-
-                    <option value="All">
-                        All Categories
-                    </option>
-
-                    <option value="Academic">
-                        Academic
-                    </option>
-
-                    <option value="Sports">
-                        Sports
-                    </option>
-
-                    <option value="Cultural">
-                        Cultural
-                    </option>
-
-                    <option value="Workshop">
-                        Workshop
-                    </option>
-
-                </select>
-
-            </div>
-
-        </section>
-
-  <!-- Upcoming Events-->
-<section class="card">
- <h2>
-                <i class="fa-solid fa-list-check"></i>
-                Upcoming Events
-            </h2>
-<ul id="eventList" class="event-list"></ul>
- </section>
-        <!-- Student Registration Form -->
-
-        <section class="card registration-card" id="registrationSection">
- <h2>
-                <i class="fa-solid fa-user-plus"></i>
-                Register for Event
-            </h2>
-
-            <p id="selectedEventText">
-                Select an event and click Register.
-            </p>
-            <form id="registrationForm">
- <!-- Hidden Event Name -->
-<input type="hidden" id="selectedEvent">
- <div class="form-group">
-<input type="text"
-                           id="studentName"
-                           placeholder="Student Name"
-                           required>
-
-                </div>
- <div class="form-group">
- <input type="text"
                            id="studentId"
                            placeholder="Student ID"
                            required>
 
                 </div>
- <div class="form-group">
 
-                    <input type="email"
-                           id="studentEmail"
-                           placeholder="Student Email"
+
+                <div class="input-group">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input type="password"
+                           id="password"
+                           placeholder="Password"
                            required>
 
                 </div>
-<button type="submit" class="btn-submit">
-  <i class="fa-solid fa-user-check"></i>
-                    Register Now
- </button>
- </form> </section>
 
- <!-- Registration Message -->
- <div id="registrationMessage"></div>
+
+                <button type="submit"
+                        class="login-btn">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    <span id="loginText">
+                        Login
+                    </span>
+
+                </button>
+
+
+            </form>
+
+
+            <p class="register-text"
+               id="registerText">
+
+                Don't have an account?
+
+                <a href="#">
+                    Register
+                </a>
+
+            </p>
+
+
+            <p id="loginMessage"></p>
+
+        </div>
+
     </div>
-  <script src="script.js"></script>
+
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
+                          
+
+        
+            
+
+                  
