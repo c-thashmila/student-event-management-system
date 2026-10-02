@@ -1,258 +1,156 @@
-// Store events
-let events = [];
+// ===============================
+// LANGUAGE SYSTEM
+// ===============================
+
+const translations = {
+
+    en: {
+
+        title: "Student Event Management System",
+
+        welcome: "Welcome! Please login to continue.",
+
+        studentId: "Student ID",
+
+        password: "Password",
+
+        login: "Login",
+
+        register: "Don't have an account?",
+
+        registerLink: "Register",
+
+        success: "Login successful!"
+
+    },
 
 
-// Add New Event
-document.getElementById("eventForm").addEventListener("submit", function(event) {
+    si: {
 
-    event.preventDefault();
+        title: "ශිෂ්‍ය සිදුවීම් කළමනාකරණ පද්ධතිය",
 
-    const eventName = document.getElementById("eventName").value;
-    const eventDate = document.getElementById("eventDate").value;
-    const eventCategory = document.getElementById("eventCategory").value;
-    const eventLocation = document.getElementById("eventLocation").value;
+        welcome: "සාදරයෙන් පිළිගනිමු! ඉදිරියට යාමට Login වන්න.",
 
+        studentId: "ශිෂ්‍ය හැඳුනුම් අංකය",
 
-    // Create new event
-    const newEvent = {
+        password: "මුරපදය",
 
-        name: eventName,
-        date: eventDate,
-        category: eventCategory,
-        location: eventLocation
+        login: "Login වන්න",
 
-    };
+        register: "ගිණුමක් නැද්ද?",
 
+        registerLink: "ලියාපදිංචි වන්න",
 
-    // Add event to array
-    events.push(newEvent);
+        success: "Login වීම සාර්ථකයි!"
+
+    },
 
 
-    // Clear form
-    document.getElementById("eventForm").reset();
+    ta: {
+
+        title: "மாணவர் நிகழ்வு மேலாண்மை அமைப்பு",
+
+        welcome: "வரவேற்கிறோம்! தொடர Login செய்யவும்.",
+
+        studentId: "மாணவர் அடையாள எண்",
+
+        password: "கடவுச்சொல்",
+
+        login: "Login",
+
+        register: "கணக்கு இல்லையா?",
+
+        registerLink: "பதிவு செய்யவும்",
+
+        success: "Login வெற்றிகரமாக முடிந்தது!"
+
+    }
+
+};
 
 
-    // Display events
-    displayEvents();
+// Change Language
 
-});
+function changeLanguage() {
 
-
-
-// Display Events
-function displayEvents() {
-
-    const eventList = document.getElementById("eventList");
-
-    eventList.innerHTML = "";
+    const language =
+        document.getElementById("language").value;
 
 
-    events.forEach(function(event, index) {
-
-        const li = document.createElement("li");
-
-        li.className = "event-item";
+    const text =
+        translations[language];
 
 
-        li.innerHTML = `
-
-            <div class="event-info">
-
-                <h3>
-                    ${event.name}
-                </h3>
-
-                <p>
-                    <i class="fa-solid fa-calendar"></i>
-                    ${event.date}
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-location-dot"></i>
-                    ${event.location}
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-tag"></i>
-                    ${event.category}
-                </p>
-
-            </div>
+    document.getElementById("systemTitle")
+        .textContent = text.title;
 
 
-            <div class="event-actions">
-
-                <button
-                    class="register-btn"
-                    onclick="openRegistration(${index})">
-
-                    <i class="fa-solid fa-user-plus"></i>
-                    Register
-
-                </button>
-
-            </div>
-
-        `;
+    document.getElementById("welcomeText")
+        .textContent = text.welcome;
 
 
-        eventList.appendChild(li);
-
-    });
-
-}
+    document.getElementById("studentId")
+        .placeholder = text.studentId;
 
 
-
-// Open Registration Form
-function openRegistration(index) {
-
-    const selectedEvent = events[index];
+    document.getElementById("password")
+        .placeholder = text.password;
 
 
-    // Set event name
-    document.getElementById("selectedEvent").value =
-        selectedEvent.name;
+    document.getElementById("loginText")
+        .textContent = text.login;
 
 
-    document.getElementById("selectedEventText").innerHTML =
+    document.getElementById("registerText")
+        .childNodes[0].textContent =
+        text.register + " ";
 
-        `You are registering for:
-        <strong>${selectedEvent.name}</strong>`;
 
-
-    // Scroll to registration form
-    document.getElementById("registrationSection")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+    document.querySelector(".register-text a")
+        .textContent = text.registerLink;
 
 }
 
 
 
-// Student Registration
-document.getElementById("registrationForm")
+// ===============================
+// LOGIN SYSTEM
+// ===============================
+
+document.getElementById("loginForm")
     .addEventListener("submit", function(event) {
 
         event.preventDefault();
 
 
-        const studentName =
-            document.getElementById("studentName").value;
-
         const studentId =
             document.getElementById("studentId").value;
 
-        const studentEmail =
-            document.getElementById("studentEmail").value;
 
-        const selectedEvent =
-            document.getElementById("selectedEvent").value;
+        const password =
+            document.getElementById("password").value;
 
 
-        // Show success message
-        document.getElementById("registrationMessage").innerHTML = `
+        if (studentId !== "" && password !== "") {
 
-            <div class="success-message">
-
-                <i class="fa-solid fa-circle-check"></i>
-
-                <h3>Registration Successful!</h3>
-
-                <p>
-                    <strong>${studentName}</strong>
-                    has successfully registered for
-                    <strong>${selectedEvent}</strong>.
-                </p>
-
-                <p>
-                    Student ID: ${studentId}
-                </p>
-
-                <p>
-                    Email: ${studentEmail}
-                </p>
-
-            </div>
-
-        `;
+            const language =
+                document.getElementById("language").value;
 
 
-        // Clear registration form
-        document.getElementById("registrationForm").reset();
+            document.getElementById("loginMessage")
+                .textContent =
+                translations[language].success;
 
-});
+
+            // Later we can redirect
+            // student to the dashboard
+
+        }
+
+    });
+
+ 
 
 
 
-// Search Events
-document.getElementById("searchInput")
-    .addEventListener("input", function() {
-
-        const searchValue =
-            this.value.toLowerCase();
-
-
-        const eventItems =
-            document.querySelectorAll(".event-item");
-
-
-        eventItems.forEach(function(item) {
-
-            const eventName =
-                item.querySelector("h3")
-                    .textContent
-                    .toLowerCase();
-
-
-            if (eventName.includes(searchValue)) {
-
-                item.style.display = "flex";
-
-            } else {
-
-                item.style.display = "none";
-
-            }
-
-        });
-
-});
-
-
-
-// Filter Events
-document.getElementById("filterCategory")
-    .addEventListener("change", function() {
-
-        const selectedCategory = this.value;
-
-
-        const eventItems =
-            document.querySelectorAll(".event-item");
-
-
-        eventItems.forEach(function(item) {
-
-            const category =
-                item.querySelector("p:nth-of-type(3)")
-                    .textContent;
-
-
-            if (
-                selectedCategory === "All" ||
-                category.includes(selectedCategory)
-            ) {
-
-                item.style.display = "flex";
-
-            } else {
-
-                item.style.display = "none";
-
-            }
-
-        });
-
-});
+   
